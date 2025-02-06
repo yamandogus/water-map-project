@@ -88,6 +88,7 @@ export default function Home() {
           placeholder="Yer ismi giriniz"
           type="text"
           size="lg"
+          color="primary"
           value={searchTerm}
           onChange={handleSearch}
         />
@@ -97,6 +98,7 @@ export default function Home() {
             onOpenChange={setIsOpen}
             selectionMode="single"
             size="sm"
+            color="primary"
             label="Konum seçiniz"
           >
             {suggestions.map((suggestion) => (
@@ -121,7 +123,7 @@ export default function Home() {
             {weatherData.list
               .filter((item) => item.dt_txt.includes("12:00:00"))
               .map((item, index) => (
-                <div key={index} className="flex justify-center align-center w-auto  w-[199px]">
+                <div key={index} className="flex justify-center align-center w-[199px]">
                   <Card
                     className={`flex flex-col items-center justify-center `}
                   >

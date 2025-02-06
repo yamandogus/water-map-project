@@ -25,7 +25,8 @@ export default function RootLayout({
       <head />
       <body
         className={clsx(
-          "min-h-screen bg-background font-sans antialiased bg-[url('https://www.transparenttextures.com/patterns/15px.png')] dark:bg-[url('https://www.transparenttextures.com/patterns/15px.png')]",
+          "min-h-screen bg-background font-sans antialiased bg-[url('/img/bg-image-wp.webp')]",
+
           fontSans.variable,
         )}
       >
