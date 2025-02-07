@@ -20,6 +20,8 @@ import {
   thunderstorm,
   wind,
 } from "@/data/weater";
+import PhoneScreen from "@/components/screens/phone/phone-screen";
+import PCScreen from "@/components/screens/phone/pc-screen";
 
 const URL =
   process.env.NEXT_PUBLIC_API_URL ||
@@ -31,13 +33,7 @@ interface Suggestion {
   lon: string;
 }
 
-const settings = {
-  dots: true,
-  infinite: true,
-  speed: 500,
-  slidesToShow: 1,
-  slidesToScroll: 1,
-};
+
 
 export default function Home() {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
@@ -96,7 +92,7 @@ export default function Home() {
 
   return (
     <div>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
         <div>
           <Input
             className="bg-dark-900"
@@ -132,158 +128,11 @@ export default function Home() {
           </Select>
         </div>
       </div>
-
       <div className="mt-4 hidden sm:block">
-        {weatherData && (
-          <div className="flex flex-wrap justify-center align-center gap-4 mt-4">
-            {weatherData.list
-              .filter((item) => item.dt_txt.includes("12:00:00"))
-              .map((item, index) => (
-                <div
-                  key={index}
-                  className="flex justify-center align-center w-[199px]"
-                >
-                  <Card
-                    className={`flex flex-col items-center justify-center `}
-                  >
-                    <CardBody className="flex flex-col items-center justify-center">
-                      <h3 className={`${"text-lg"} font-semibold`}>
-                        {new Date(item.dt * 1000).toLocaleDateString("tr-TR", {
-                          weekday: "long",
-                        })}
-                      </h3>
-                      <div className="flex items-center justify-center">
-                        <DotLottieReact
-                          height={200}
-                          width={200}
-                          src={
-                            item.weather[0].main === "Clouds"
-                              ? cloud
-                              : item.weather[0].main === "Rain"
-                                ? rain
-                                : item.weather[0].main === "Snow"
-                                  ? snow
-                                  : item.weather[0].main === "Clear"
-                                    ? sun
-                                    : item.weather[0].main === "Overcast"
-                                      ? overcast
-                                      : item.weather[0].main === "Wind"
-                                        ? wind
-                                        : item.weather[0].main ===
-                                            "Thunderstorm"
-                                          ? thunderstorm
-                                          : item.weather[0].main === "Mist"
-                                            ? mist
-                                            : item.weather[0].main === "Hot"
-                                              ? hot
-                                              : ""
-                          }
-                          loop
-                          autoplay
-                        />
-                      </div>
-                      <p className={`${"text-lg"} font-semibold capitalize`}>
-                        {item.weather[0].description}
-                      </p>
-                      <h6
-                        className={`text-[#FFB457] font-[800] ${"text-[30px]"} font-semibold`}
-                      >
-                        {item.main.temp}°C
-                      </h6>
-
-                      <div className="mt-4 grid grid-cols-2 gap-4 text-center">
-                        <div>
-                          <p className="text-sm">Nem</p>
-                          <p className="font-semibold">{item.main.humidity}%</p>
-                        </div>
-                        <div>
-                          <p className="text-sm">Rüzgar</p>
-                          <p className="font-semibold">
-                            {item.wind.speed} km/s
-                          </p>
-                        </div>
-                      </div>
-                    </CardBody>
-                  </Card>
-                </div>
-              ))}
-          </div>
-        )}
+       <PhoneScreen weatherData={weatherData as WeatherData} />
       </div>
       <div className="mt-4 block sm:hidden">
-        <h6>test xs screen</h6>
-        {weatherData && (
-          <Slider {...settings}>
-            {weatherData.list
-              .filter((item) => item.dt_txt.includes("12:00:00"))
-              .map((item, index) => (
-                <div key={index} className="flex flex-row gap-4 w-[199px]">
-                  <Card
-                    className={`flex flex-col items-center justify-center `}
-                  >
-                    <CardBody className="flex flex-col items-center justify-center">
-                      <h3 className={`${"text-lg"} font-semibold`}>
-                        {new Date(item.dt * 1000).toLocaleDateString("tr-TR", {
-                          weekday: "long",
-                        })}
-                      </h3>
-                      <div className="flex items-center justify-center">
-                        <DotLottieReact
-                          height={200}
-                          width={200}
-                          src={
-                            item.weather[0].main === "Clouds"
-                              ? cloud
-                              : item.weather[0].main === "Rain"
-                                ? rain
-                                : item.weather[0].main === "Snow"
-                                  ? snow
-                                  : item.weather[0].main === "Clear"
-                                    ? sun
-                                    : item.weather[0].main === "Overcast"
-                                      ? overcast
-                                      : item.weather[0].main === "Wind"
-                                        ? wind
-                                        : item.weather[0].main ===
-                                            "Thunderstorm"
-                                          ? thunderstorm
-                                          : item.weather[0].main === "Mist"
-                                            ? mist
-                                            : item.weather[0].main === "Hot"
-                                              ? hot
-                                              : ""
-                          }
-                          loop
-                          autoplay
-                        />
-                      </div>
-                      <p className={`${"text-lg"} font-semibold capitalize`}>
-                        {item.weather[0].description}
-                      </p>
-                      <h6
-                        className={`text-[#FFB457] font-[800] ${"text-[30px]"} font-semibold`}
-                      >
-                        {item.main.temp}°C
-                      </h6>
-
-                      <div className="mt-4 grid grid-cols-2 gap-4 text-center">
-                        <div>
-                          <p className="text-sm">Nem</p>
-                          <p className="font-semibold">{item.main.humidity}%</p>
-                        </div>
-                        <div>
-                          <p className="text-sm">Rüzgar</p>
-                          <p className="font-semibold">
-                            {item.wind.speed} km/s
-                          </p>
-                        </div>
-                      </div>
-                    </CardBody>
-                  </Card>
-                </div>
-              ))}
-          </Slider>
-        )}
+          <PCScreen weatherData={weatherData as WeatherData} />
       </div>
     </div>
   );
