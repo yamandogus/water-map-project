@@ -7,6 +7,7 @@ import { Card, CardBody } from "@nextui-org/card";
 import { Select, SelectItem } from "@nextui-org/select";
 import { WeatherData } from "@/types/type";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import Slider from "react-slick";
 
 const URL =
   process.env.NEXT_PUBLIC_API_URL ||
@@ -17,6 +18,14 @@ interface Suggestion {
   lat: string;
   lon: string;
 }
+
+const settings = {
+  dots: true,
+  infinite: true,
+  speed: 500,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+};
 
 const sun =
   "https://lottie.host/ec07c040-7e69-4d35-a0fd-80f8029bef91/KB41wLx7f1.lottie";
@@ -38,6 +47,12 @@ export default function Home() {
   const [searchTerm, setSearchTerm] = useState("");
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
   const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    if (lat !== 0 && lon !== 0) {
+      handleClick();
+    }
+  }, [lat, lon]);
 
   const handleClick = async () => {
     const params = new URLSearchParams({
@@ -82,17 +97,19 @@ export default function Home() {
 
   return (
     <div>
-      <div className="flex mb-4 gap-4">
-        <Input
-          className="bg-dark-900"
-          placeholder="Yer ismi giriniz"
-          type="text"
-          size="lg"
-          color="primary"
-          value={searchTerm}
-          onChange={handleSearch}
-        />
-        <div className="flex w-full flex-wrap md:flex-nowrap gap-4">
+      <div className="grid md:grid-cols-2 xs:grid-cols-1 gap-4">
+        <div>
+          <Input
+            className="bg-dark-900"
+            placeholder="Yer ismi giriniz"
+            type="text"
+            size="lg"
+            color="primary"
+            value={searchTerm}
+            onChange={handleSearch}
+          />
+        </div>
+        <div>
           <Select
             isOpen={isOpen}
             onOpenChange={setIsOpen}
@@ -108,7 +125,6 @@ export default function Home() {
                 onPress={() => {
                   setLat(Number(suggestion.lat));
                   setLon(Number(suggestion.lon));
-                  handleClick();
                 }}
               >
                 {suggestion.display_name}
@@ -117,13 +133,16 @@ export default function Home() {
           </Select>
         </div>
       </div>
-      <div className="mt-4">
+      <div className="mt-4 xs:hidden md:block">
         {weatherData && (
           <div className="flex flex-wrap justify-center align-center gap-4 mt-4">
             {weatherData.list
               .filter((item) => item.dt_txt.includes("12:00:00"))
               .map((item, index) => (
-                <div key={index} className="flex justify-center align-center w-[199px]">
+                <div
+                  key={index}
+                  className="flex justify-center align-center w-[199px]"
+                >
                   <Card
                     className={`flex flex-col items-center justify-center `}
                   >
@@ -182,6 +201,84 @@ export default function Home() {
                 </div>
               ))}
           </div>
+        )}
+      </div>
+      <div className="mt-4 xs:block md:hidden">
+        <h6>test xs screen</h6>
+        {weatherData && (
+            <Slider {...settings}>
+          <div className="flex flex-wrap justify-center align-center gap-4 mt-4">
+            {weatherData.list
+              .filter((item) => item.dt_txt.includes("12:00:00"))
+              .map((item, index) => (
+                  <div
+                    key={index}
+                    className="flex justify-center align-center w-[199px]"
+                  >
+                    <Card
+                      className={`flex flex-col items-center justify-center `}
+                    >
+                      <CardBody className="flex flex-col items-center justify-center">
+                        <h3 className={`${"text-lg"} font-semibold`}>
+                          {new Date(item.dt * 1000).toLocaleDateString(
+                            "tr-TR",
+                            {
+                              weekday: "long",
+                            }
+                          )}
+                        </h3>
+                        <div className="flex items-center justify-center">
+                          <DotLottieReact
+                            height={200}
+                            width={200}
+                            src={
+                              item.weather[0].main === "Clouds"
+                                ? cloud
+                                : item.weather[0].main === "Rain"
+                                  ? rain
+                                  : item.weather[0].main === "Snow"
+                                    ? snow
+                                    : item.weather[0].main === "Clear"
+                                      ? sun
+                                      : item.weather[0].main === "Overcast"
+                                        ? overcast
+                                        : item.weather[0].main === "Wind"
+                                          ? wind
+                                          : ""
+                            }
+                            loop
+                            autoplay
+                          />
+                        </div>
+                        <p className={`${"text-lg"} font-semibold capitalize`}>
+                          {item.weather[0].description}
+                        </p>
+                        <h6
+                          className={`text-[#FFB457] font-[800] ${"text-[30px]"} font-semibold`}
+                        >
+                          {item.main.temp}°C
+                        </h6>
+
+                        <div className="mt-4 grid grid-cols-2 gap-4 text-center">
+                          <div>
+                            <p className="text-sm">Nem</p>
+                            <p className="font-semibold">
+                              {item.main.humidity}%
+                            </p>
+                          </div>
+                          <div>
+                            <p className="text-sm">Rüzgar</p>
+                            <p className="font-semibold">
+                              {item.wind.speed} km/s
+                            </p>
+                          </div>
+                        </div>
+                      </CardBody>
+                    </Card>
+                  </div>
+              ))}
+          </div>
+              </Slider>
         )}
       </div>
     </div>
