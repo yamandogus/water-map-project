@@ -2,38 +2,21 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Input } from "@nextui-org/input";
-import { Card, CardBody } from "@nextui-org/card";
 import { Select, SelectItem } from "@nextui-org/select";
 import { WeatherData } from "@/types/type";
-import { DotLottieReact } from "@lottiefiles/dotlottie-react";
-import Slider from "react-slick";
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
-import {
-  cloud,
-  hot,
-  mist,
-  overcast,
-  rain,
-  snow,
-  sun,
-  thunderstorm,
-  wind,
-} from "@/data/weater";
 import PhoneScreen from "@/components/screens/phone/phone-screen";
 import PCScreen from "@/components/screens/phone/pc-screen";
 
-const URL =
-  process.env.NEXT_PUBLIC_API_URL ||
-  "https://api.openweathermap.org/data/2.5/forecast?";
+const URL = "https://api.openweathermap.org/data/2.5/forecast";
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY || "01b8d2d1a240b89af7e0abc2f0917672";
 
 interface Suggestion {
   display_name: string;
   lat: string;
   lon: string;
 }
-
-
 
 export default function Home() {
   const [weatherData, setWeatherData] = useState<WeatherData | null>(null);
@@ -50,18 +33,17 @@ export default function Home() {
   }, [lat, lon]);
 
   const handleClick = async () => {
-    const params = new URLSearchParams({
-      lat: String(lat),
-      lon: String(lon),
-      lang: "tr",
-      appid: process.env.NEXT_PUBLIC_API_KEY || "",
-      units: "metric",
-      cnt: "40",
-    });
     try {
-      const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}?${params.toString()}`
-      );
+      const response = await axios.get(URL, {
+        params: {
+          lat: lat,
+          lon: lon,
+          lang: "tr",
+          appid: API_KEY,
+          units: "metric",
+          cnt: "40"
+        }
+      });
       setWeatherData(response.data);
       console.log("Data", response.data);
       return response.data;
