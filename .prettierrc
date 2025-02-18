@@ -1,0 +1,8 @@
+{
+  "endOfLine": "auto",
+  "jsxSortProps": false,
+  "bracketSpacing": true,
+  "semi": true,
+  "singleQuote": false,
+  "trailingComma": "es5"
+}

@@ -35,7 +35,7 @@ export const title = tv({
         "pink",
         "foreground",
       ],
-      class: "bg-clip-text text-transparent bg-gradient-to-b text-center",
+      class: "bg-clip-text text-transparent bg-gradient-to-b",
     },
   ],
 });
