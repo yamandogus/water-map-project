@@ -1,25 +1,25 @@
 import React from "react";
 import NextLink from "next/link";
 import { ThemeSwitch } from "@/components/theme-switch";
-import { NavbarBrand, NavbarContent } from "@heroui/navbar";
 
-interface NavbarProps {
-  className?: string;
-}
-
-const Navbar = ({ className = "" }: NavbarProps) => {
+const Navbar = () => {
   return (
-    <div>
-      <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
-        <NavbarBrand as="li" className="gap-3 max-w-fit">
-          <NextLink className="flex justify-start items-center gap-1" href="/">
-            <p className="font-bold text-inherit">Weather App</p>
-          </NextLink>
-        </NavbarBrand>
-      </NavbarContent>
-      <NavbarContent justify="end">
+    <div className="w-full px-4 py-2 flex justify-between items-center bg-white/30 backdrop-blur-sm">
+      <div className="flex items-center gap-3">
+        <div className="w-8 h-8">
+          <img
+            src="https://i.pravatar.cc/150"
+            alt="avatar"
+            className="w-full h-full rounded-full"
+          />
+        </div>
+        <NextLink href="/" className="font-bold text-dark dark:text-white">
+          Weather App
+        </NextLink>
+      </div>
+      <div>
         <ThemeSwitch />
-      </NavbarContent>
+      </div>
     </div>
   );
 };
