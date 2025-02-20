@@ -100,7 +100,7 @@ export default function WeatherDashboard() {
           <Input
             className="w-full"
             width={"100%"}
-            color={"success"}
+            color="success"
             placeholder="İl veya İlçe adı giriniz..."
             value={searchTerm}
             onChange={handleSearch}

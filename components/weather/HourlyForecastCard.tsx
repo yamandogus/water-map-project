@@ -28,7 +28,7 @@ const HourlyForecastCard = ({
             key={index}
             className="flex items-center justify-between p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg"
           >
-            <div className="flex items-center gap-4">
+            <div className="flex sm:flex-row flex-col  items-center gap-4">
               <div className="w-12 h-12">
                 <DotLottieReact
                   height={48}
