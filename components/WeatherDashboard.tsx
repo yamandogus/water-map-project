@@ -1,19 +1,20 @@
 "use client";
 
-import { WeatherResponse } from "@/types/type";
 import { Input } from "@heroui/input";
 import { Select, SelectItem } from "@heroui/select";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { backgroundImages, dummyData } from "./weather/weather-dumy";
+
 import CurrentWeatherCard from "./weather/CurrentWeatherCard";
-import WeatherInfoCard from "./weather/WeatherInfoCard";
-import WeatherForecastCard from "./weather/WeatherForecastCard";
 import HourlyForecastCard from "./weather/HourlyForecastCard";
+import { backgroundImages, dummyData } from "./weather/weather-dumy";
+import WeatherForecastCard from "./weather/WeatherForecastCard";
+import WeatherInfoCard from "./weather/WeatherInfoCard";
+
+import { WeatherResponse } from "@/types/type";
 
 const URL = "https://api.openweathermap.org/data/2.5/forecast";
-const API_KEY =
-  process.env.NEXT_PUBLIC_API_KEY || "01b8d2d1a240b89af7e0abc2f0917672";
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY || "01b8d2d1a240b89af7e0abc2f0917672";
 
 interface Suggestion {
   display_name: string;
@@ -24,9 +25,7 @@ interface Suggestion {
 export default function WeatherDashboard() {
   const currentTime = new Date().toLocaleTimeString();
   const currentDate = new Date().toLocaleDateString();
-  const [weatherData, setWeatherData] = useState<WeatherResponse | null>(
-    dummyData
-  );
+  const [weatherData, setWeatherData] = useState<WeatherResponse | null>(dummyData);
   const [lat, setLat] = useState(0);
   const [lon, setLon] = useState(0);
   const [searchTerm, setSearchTerm] = useState("");
@@ -99,24 +98,24 @@ export default function WeatherDashboard() {
         <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 py-4">
           <Input
             className="w-full"
-            width={"100%"}
             color="success"
+            onChange={handleSearch}
             placeholder="İl veya İlçe adı giriniz..."
             value={searchTerm}
-            onChange={handleSearch}
+            width={"100%"}
           />
           <Select
             className="w-full"
             color="success"
-            placeholder="Seçiniz..."
             onBlur={() => setIsOpen(false)}
             onFocus={() => setIsOpen(true)}
+            placeholder="Seçiniz..."
           >
             {suggestions.map((suggestion, index) => (
               <SelectItem
+                className="w-full"
                 key={index}
-                value={suggestion.display_name}
-                onPress={() => {
+                onClick={() => {
                   setLat(Number(suggestion.lat));
                   setLon(Number(suggestion.lon));
                 }}
