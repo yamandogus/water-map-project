@@ -23,8 +23,6 @@ interface Suggestion {
 }
 
 export default function WeatherDashboard() {
-  const currentTime = new Date().toLocaleTimeString();
-  const currentDate = new Date().toLocaleDateString();
   const [weatherData, setWeatherData] = useState<WeatherResponse | null>(dummyData);
   const [lat, setLat] = useState(0);
   const [lon, setLon] = useState(0);
@@ -56,7 +54,6 @@ export default function WeatherDashboard() {
       return response.data;
     } catch (error) {
       console.error("Error fetching weather data", error);
-
       return null;
     }
   };
@@ -101,7 +98,6 @@ export default function WeatherDashboard() {
             color="success"
             onChange={handleSearch}
             placeholder="İl veya İlçe adı giriniz..."
-            value={searchTerm}
             width={"100%"}
           />
           <Select

@@ -1,7 +1,9 @@
-import { WeatherResponse } from "@/types/type";
 import { Card } from "@heroui/card";
 import React from "react";
+
 import { weatherSuggestions } from "./weather-dumy";
+
+import { WeatherResponse } from "@/types/type";
 
 const WeatherInfoCard = ({ weatherData }: { weatherData: WeatherResponse }) => {
   const currentTime = new Date().toLocaleTimeString();
@@ -15,9 +17,7 @@ const WeatherInfoCard = ({ weatherData }: { weatherData: WeatherResponse }) => {
       <div className="text-6xl font-bold mt-4">{currentTime}</div>
       <div className="text-xl mt-2">{currentDate}</div>
       <div>
-        <h2 className="text-semibold text-blue-500 mt-4 mb-2">
-          Hava Durumu Önerileri
-        </h2>
+        <h2 className="text-semibold text-blue-500 mt-4 mb-2">Hava Durumu Önerileri</h2>
         <p>
           {weatherData?.list[0].weather[0].main === "Clouds"
             ? weatherSuggestions.Clouds

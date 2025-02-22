@@ -1,31 +1,16 @@
-import {
-  cloud,
-  hot,
-  mist,
-  overcast,
-  rain,
-  snow,
-  sun,
-  thunderstorm,
-  wind,
-} from "@/data/weater";
-import { WeatherResponse } from "@/types/type";
 import { Card } from "@heroui/card";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import React from "react";
 
-const CurrentWeatherCard = ({
-  weatherData,
-}: {
-  weatherData: WeatherResponse;
-}) => {
+import { cloud, hot, mist, overcast, rain, snow, sun, thunderstorm, wind } from "@/data/weater";
+import { WeatherResponse } from "@/types/type";
+
+const CurrentWeatherCard = ({ weatherData }: { weatherData: WeatherResponse }) => {
   return (
     <Card className={`p-6 rounded-3xl shadow-lg transition-all duration-300`}>
       <div className="flex sm:justify-between sm:flex-row flex-col items-center p-4 rounded-2xl">
         <div className="sm:order-1 order-2 sm:text-left text-center">
-          <div className="text-6xl font-bold">
-            {weatherData?.list[0].main.temp}°C
-          </div>
+          <div className="text-6xl font-bold">{weatherData?.list[0].main.temp}°C</div>
           <div className="text-xl mt-2 font-bold text-yellow-400">
             Hissedilen: {weatherData?.list[0].main.feels_like}°C
           </div>
@@ -34,8 +19,9 @@ const CurrentWeatherCard = ({
           <div className="flex justify-center items-center">
             <div className="w-32 h-32 flex justify-center items-center">
               <DotLottieReact
+                autoplay
                 height={128}
-                width={128}
+                loop
                 src={
                   weatherData?.list[0].weather[0].main === "Clouds"
                     ? cloud
@@ -49,19 +35,15 @@ const CurrentWeatherCard = ({
                             ? overcast
                             : weatherData?.list[0].weather[0].main === "Wind"
                               ? wind
-                              : weatherData?.list[0].weather[0].main ===
-                                  "Thunderstorm"
+                              : weatherData?.list[0].weather[0].main === "Thunderstorm"
                                 ? thunderstorm
-                                : weatherData?.list[0].weather[0].main ===
-                                    "Mist"
+                                : weatherData?.list[0].weather[0].main === "Mist"
                                   ? mist
-                                  : weatherData?.list[0].weather[0].main ===
-                                      "Hot"
+                                  : weatherData?.list[0].weather[0].main === "Hot"
                                     ? hot
                                     : ""
                 }
-                loop
-                autoplay
+                width={128}
               />
             </div>
           </div>
@@ -73,13 +55,13 @@ const CurrentWeatherCard = ({
       <div className="grid grid-cols-3 gap-4 mt-6 backdrop-blur-sm bg-white/30 p-4 rounded-lg">
         <div className="text-center">
           <div className="text-md font-bold">🌬️ Nem</div>
-          <div className="text-md text-yellow-400 dark:text-blue-500">
+          <div className="font-bold text-yellow-400 dark:text-blue-500">
             {weatherData?.list[0].main.humidity} %
           </div>
         </div>
         <div className="text-center">
           <div className="text-md font-bold">💨 Rüzgar Hızı</div>
-          <div className="text-md text-yellow-400 dark:text-blue-500">
+          <div className="font-bold text-yellow-400 dark:text-blue-500">
             {weatherData?.list[0].wind.speed} km/s
           </div>
         </div>

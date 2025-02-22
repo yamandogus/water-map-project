@@ -180,3 +180,73 @@ export interface WeatherResponse {
     };
   }[];
 }
+
+interface EarthquakeResponse {
+  status: boolean;
+  httpStatus: number;
+  serverloadms: number;
+  desc: string;
+  metadata: EarthquakeMetadata;
+  result: Earthquake[];
+}
+
+// Metadata interface'i
+interface EarthquakeMetadata {
+  date_starts: string;
+  date_ends: string;
+  total: number;
+}
+
+// Deprem verisi interface'i
+export interface Earthquake {
+  _id: string;
+  earthquake_id: string;
+  provider: string;
+  title: string;
+  date: string;
+  mag: number;
+  depth: number;
+  geojson: GeoPoint;
+  location_properties: LocationProperties;
+  rev: null;
+  date_time: string;
+  created_at: number;
+  location_tz: string;
+}
+
+// Coğrafi nokta interface'i
+interface GeoPoint {
+  type: "Point";
+  coordinates: [number, number]; // [longitude, latitude]
+}
+
+// Konum özellikleri interface'i
+interface LocationProperties {
+  closestCity: City;
+  epiCenter: EpiCenter;
+  closestCities: City[];
+  airports: Airport[];
+}
+
+// Şehir interface'i
+interface City {
+  name: string;
+  cityCode: number;
+  distance: number;
+  population: number;
+}
+
+// Merkez üssü interface'i
+interface EpiCenter {
+  name: string;
+  cityCode: number;
+  population: number | null;
+}
+
+// Havalimanı interface'i
+interface Airport {
+  distance: number;
+  name: string;
+  code: string;
+  coordinates: GeoPoint;
+}

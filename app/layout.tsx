@@ -1,11 +1,13 @@
 import "@/styles/globals.css";
-import { Metadata, Viewport } from "next";
 import clsx from "clsx";
+import { Metadata, Viewport } from "next";
+
 import { Providers } from "./providers";
-import { siteConfig } from "@/config/site";
-import { fontSans } from "@/config/fonts";
+
 import Navbar from "@/components/navbar";
 import Sidebar from "@/components/Sidebar";
+import { fontSans } from "@/config/fonts";
+import { siteConfig } from "@/config/site";
 
 export const metadata: Metadata = {
   title: {
@@ -25,13 +27,9 @@ export const viewport: Viewport = {
   ],
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html suppressHydrationWarning lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head />
       <body
         className={clsx(
@@ -46,7 +44,7 @@ export default function RootLayout({
             </div>
             <Sidebar />
             <main className="md:pl-20 flex-1">
-              <div className="h-full p-4">{children}</div>
+              <div className="h-full md:pl-4 pl-0">{children}</div>
             </main>
           </div>
         </Providers>
