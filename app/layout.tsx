@@ -33,7 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head />
       <body
         className={clsx(
-          "min-h-screen bg-gradient-to-br from-gray-900 to-gray-800 font-sans antialiased overflow-x-hidden",
+          "min-h-screen bg-gradient-to-b font-sans antialiased overflow-x-hidden",
           fontSans.variable
         )}
       >
@@ -43,7 +43,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
               <Navbar />
             </div>
             <Sidebar />
-            <main className="md:pl-20 flex-1">
+            <main className="md:pl-20 flex-1 pt-16 md:pt-0">
               <div className="h-full md:pl-4 pl-0">{children}</div>
             </main>
           </div>

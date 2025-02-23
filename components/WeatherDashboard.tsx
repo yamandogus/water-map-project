@@ -94,14 +94,14 @@ export default function WeatherDashboard() {
       <div className="relative z-10 max-w-7xl mx-auto space-y-6">
         <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 py-4">
           <Input
-            className="w-full"
+            className="w-2/3 md:w-full"
             color="success"
             onChange={handleSearch}
             placeholder="İl veya İlçe adı giriniz..."
             width={"100%"}
           />
           <Select
-            className="w-full"
+            className="w-2/3 md:w-full"
             color="success"
             onBlur={() => setIsOpen(false)}
             onFocus={() => setIsOpen(true)}
@@ -111,7 +111,7 @@ export default function WeatherDashboard() {
               <SelectItem
                 className="w-full"
                 key={index}
-                onClick={() => {
+                onPress={() => {
                   setLat(Number(suggestion.lat));
                   setLon(Number(suggestion.lon));
                 }}

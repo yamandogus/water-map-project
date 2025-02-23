@@ -41,17 +41,17 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen dark:bg-gray-900 py-16 px-4 flex items-center">
+    <div className="min-h-screen py-16 px-4 flex items-center">
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {cards.map((card, index) => (
             <Link
-              className="group transform transition-all duration-300"
+              className="group transform transition-all duration-300 "
               href={card.href}
               key={index}
             >
               <div
-                className={`${card.color} rounded-3xl p-8 h-full group-hover:scale-[1.02] group-hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700`}
+                className={`${card.color} rounded-3xl p-8 h-full group-hover:scale-[1.02] group-hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 shadow-lg`}
               >
                 <div className="flex flex-col items-center text-gray-800 dark:text-white">
                   <div className="bg-gray-50 dark:bg-gray-700 p-4 rounded-2xl">{card.icon}</div>
