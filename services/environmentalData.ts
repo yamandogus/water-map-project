@@ -88,10 +88,14 @@ export class EnvironmentalDataService {
         minute: '2-digit'
       });
 
+      const carbonReduction = carbonData?.data?.attributes?.carbon_kg 
+        ? `${Math.round(carbonData.data.attributes.carbon_kg / 1000)} ton CO2/yıl`
+        : "Hesaplanamadı";
+
       return {
         energySaving: `${Math.round(efficiency * 100)}%`,
         waterConservation: `Yıllık ${(annualWaterUsage * efficiency / 1000000).toFixed(1)} milyon m³`,
-        carbonReduction: `${Math.round(carbonData?.data.attributes.carbon_kg / 1000)} ton CO2/yıl`,
+        carbonReduction,
         waterQuality: {
           ph: waterQuality?.ph || 7.0,
           temperature: waterQuality?.temperature || 18.0,
