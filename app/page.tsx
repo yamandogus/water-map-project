@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { IoCloudOutline, IoInformationCircleOutline, IoLocationOutline } from "react-icons/io5";
-import { IoRocketOutline } from "react-icons/io5";
+import { IoCloudOutline, IoInformationCircleOutline, IoLocationOutline, IoWaterOutline } from "react-icons/io5";
 
 export default function Home() {
   const cards = [
@@ -22,20 +21,21 @@ export default function Home() {
       href: "/navigation",
       color: "bg-white dark:bg-gray-800",
     },
+    
     {
-      title: "HAKKIMIZDA",
+      title: "SU KALİTESİ TAKİP",
+      description:
+        "Türkiye'deki önemli su kaynaklarının kalite değerleri, içilebilirlik durumu ve çevresel etki analizleri. Baraj ve göllerin su kalitesi parametrelerinin gerçek zamanlı takibi.",
+      icon: <IoWaterOutline className="w-12 h-12 text-violet-500" />,
+      href: "/water-quality-monitoring",
+      color: "bg-white dark:bg-gray-800",
+    },
+    {
+      title: "PROJELER HAKKINDA",
       description:
         "Next.js 14, Tailwind CSS, TypeScript ve çeşitli modern web teknolojileri kullanılarak geliştirilen projemizin detayları. Açık kaynak kodlu geliştirme sürecimiz ve kullanılan API'lar hakkında bilgiler.",
       icon: <IoInformationCircleOutline className="w-12 h-12 text-emerald-500" />,
       href: "/about",
-      color: "bg-white dark:bg-gray-800",
-    },
-    {
-      title: "YENİ PROJE",
-      description:
-        "Geliştirilmekte olan yeni projelerimiz ve gelecek özellikler. Su kaynaklarının korunması ve çevre bilinci konusunda farkındalık oluşturmayı hedefleyen yenilikçi çözümlerimiz.",
-      icon: <IoRocketOutline className="w-12 h-12 text-violet-500" />,
-      href: "/coming-soon",
       color: "bg-white dark:bg-gray-800",
     },
   ];
@@ -46,7 +46,7 @@ export default function Home() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {cards.map((card, index) => (
             <Link
-              className="group transform transition-all duration-300 "
+              className="group transform transition-all duration-300 shadow-[0_0_10px_rgba(0,0,0,0.1)] rounded-3xl"
               href={card.href}
               key={index}
             >

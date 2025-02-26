@@ -35,7 +35,7 @@ const HourlyForecastCard = ({ weatherData }: { weatherData: WeatherResponse }) =
       <div className="space-y-4">
         {weatherData?.list.slice(0, 5).map((item, index) => (
           <div
-            className="flex items-center justify-between p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg"
+            className="flex items-center justify-between p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg border-b"
             key={index}
           >
             <div className="flex sm:flex-row flex-col items-center gap-4">
@@ -44,7 +44,7 @@ const HourlyForecastCard = ({ weatherData }: { weatherData: WeatherResponse }) =
               </div>
               <div>
                 <div className="font-semibold">
-                  {new Date(item.dt * 1000).toLocaleTimeString("tr-TR", {
+                  {new Date().toLocaleTimeString("tr-TR", {
                     hour: "2-digit",
                     minute: "2-digit",
                     hour12: true,

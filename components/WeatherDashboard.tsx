@@ -1,9 +1,8 @@
 "use client";
 
-import { Input } from "@heroui/input";
-import { Select, SelectItem } from "@heroui/select";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { IoLocationOutline } from "react-icons/io5";
 
 import CurrentWeatherCard from "./weather/CurrentWeatherCard";
 import HourlyForecastCard from "./weather/HourlyForecastCard";
@@ -77,49 +76,71 @@ export default function WeatherDashboard() {
     }
   };
 
+  const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const selectedOption = suggestions.find(
+      (suggestion) => suggestion.display_name === e.target.value
+    );
+    if (selectedOption) {
+      setLat(Number(selectedOption.lat));
+      setLon(Number(selectedOption.lon));
+    }
+  };
+
   return (
     <div
       className={`min-h-screen relative bg-transparent rounded`}
       style={{
-        backgroundImage: `url(${backgroundImages[weatherData?.list[0].weather[0].main as keyof typeof backgroundImages] || backgroundImages.default})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        backgroundAttachment: "fixed",
         minHeight: "100vh",
         width: "100%",
         height: "100%",
       }}
     >
-      <div className="relative z-10 max-w-7xl mx-auto space-y-6">
+      <div className="relative z-10 max-w-7xl mx-auto space-y-6 px-4">
         <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 py-4">
-          <Input
-            className="w-2/3 md:w-full"
-            color="success"
-            onChange={handleSearch}
-            placeholder="İl veya İlçe adı giriniz..."
-            width={"100%"}
-          />
-          <Select
-            className="w-2/3 md:w-full"
-            color="success"
-            onBlur={() => setIsOpen(false)}
-            onFocus={() => setIsOpen(true)}
-            placeholder="Seçiniz..."
-          >
-            {suggestions.map((suggestion, index) => (
-              <SelectItem
-                className="w-full"
-                key={index}
-                onPress={() => {
-                  setLat(Number(suggestion.lat));
-                  setLon(Number(suggestion.lon));
-                }}
-              >
-                {suggestion.display_name}
-              </SelectItem>
-            ))}
-          </Select>
+          <div className="relative w-full">
+            <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
+              <IoLocationOutline className="h-5 w-5 text-gray-400" />
+            </div>
+            <input
+              type="text"
+              className="w-full pl-10 pr-4 py-2.5 
+              bg-white/80 dark:bg-gray-800/80 backdrop-blur-md
+              border border-gray-200 dark:border-gray-700
+              rounded-xl shadow-lg
+              text-gray-900 dark:text-white
+              placeholder-gray-500 dark:placeholder-gray-400
+              focus:outline-none focus:ring-2 focus:ring-blue-500/50 dark:focus:ring-blue-400/50
+              focus:border-transparent
+              transition-all duration-300"
+              onChange={handleSearch}
+              placeholder="İl veya İlçe adı giriniz..."
+              value={searchTerm}
+              onFocus={() => setIsOpen(true)}
+            />
+            
+            {/* Öneriler Dropdown */}
+            {isOpen && suggestions.length > 0 && (
+              <div className="absolute w-full mt-2 py-2 bg-white dark:bg-gray-800 rounded-xl shadow-lg 
+              border border-gray-200 dark:border-gray-700 backdrop-blur-md max-h-60 overflow-y-auto z-[100]">
+                {suggestions.map((suggestion, index) => (
+                  <button
+                    key={index}
+                    className="w-full px-4 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700 
+                    text-gray-900 dark:text-white transition-colors cursor-pointer
+                    text-sm truncate"
+                    onClick={() => {
+                      setLat(Number(suggestion.lat));
+                      setLon(Number(suggestion.lon));
+                      setSearchTerm(suggestion.display_name.split(',')[0]); // Sadece ilk kısmı al
+                      setIsOpen(false);
+                    }}
+                  >
+                    {suggestion.display_name}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
         </div>
 
         <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6">

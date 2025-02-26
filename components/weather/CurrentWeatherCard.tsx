@@ -7,7 +7,7 @@ import { WeatherResponse } from "@/types/type";
 
 const CurrentWeatherCard = ({ weatherData }: { weatherData: WeatherResponse }) => {
   return (
-    <Card className={`p-6 rounded-3xl shadow-lg transition-all duration-300`}>
+    <Card className={`p-6 dark:shadow-white/30 dark:text-gray-600 transition-all duration-300`}>
       <div className="flex sm:justify-between sm:flex-row flex-col items-center p-4 rounded-2xl">
         <div className="sm:order-1 order-2 sm:text-left text-center">
           <div className="text-6xl font-bold">{weatherData?.list[0].main.temp}°C</div>

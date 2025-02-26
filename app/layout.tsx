@@ -5,9 +5,9 @@ import { Metadata, Viewport } from "next";
 import { Providers } from "./providers";
 
 import Navbar from "@/components/navbar";
-import Sidebar from "@/components/Sidebar";
 import { fontSans } from "@/config/fonts";
 import { siteConfig } from "@/config/site";
+import Sidebar from "@/components/sidebar";
 
 export const metadata: Metadata = {
   title: {

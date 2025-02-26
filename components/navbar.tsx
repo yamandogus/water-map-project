@@ -49,13 +49,13 @@ export default function Navbar() {
             </Link>
           </NavbarMenuItem>
           <NavbarMenuItem>
-            <Link className="w-full" href="/water-quality" onClick={() => setIsMenuOpen(false)}>
+            <Link className="w-full" href="/water-quality-monitoring" onClick={() => setIsMenuOpen(false)}>
               Su Kalitesi
             </Link>
           </NavbarMenuItem>
-          <NavbarMenuItem className="flex flex-col gap-2">
-            <Link className="w-full" href="/coming-soon" onClick={() => setIsMenuOpen(false)}>
-              Yenilikler
+          <NavbarMenuItem>
+            <Link className="w-full" href="/about" onClick={() => setIsMenuOpen(false)}>
+              Hakkımızda
             </Link>
           </NavbarMenuItem>
         </NavbarMenuItem>

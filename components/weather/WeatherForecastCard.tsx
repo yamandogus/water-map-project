@@ -38,7 +38,7 @@ const WeatherForecastCard = ({ weatherData }: { weatherData: WeatherResponse }) 
           .slice(0, 5)
           .map((item, index) => (
             <div
-              className="flex items-center justify-between p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg"
+              className="flex items-center justify-between p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg border-b"
               key={index}
             >
               <div className="flex sm:flex-row flex-col items-center gap-4">
@@ -47,7 +47,7 @@ const WeatherForecastCard = ({ weatherData }: { weatherData: WeatherResponse }) 
                 </div>
                 <div>
                   <div className="font-semibold">
-                    {new Date(item.dt * 1000).toLocaleDateString("tr-TR")}
+                    {new Date(item.dt * 1000).toLocaleDateString("tr-TR", { weekday: "long" })}
                   </div>
                   <div className="text-sm text-gray-500">{item.weather[0].description}</div>
                 </div>
