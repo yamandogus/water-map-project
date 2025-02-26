@@ -2,7 +2,15 @@
 
 import React from "react";
 import Link from "next/link";
-import { IoArrowBack, IoLogoGithub, IoRocketOutline, IoCodeSlash, IoLibrary, IoServer, IoCloud } from "react-icons/io5";
+import {
+  IoArrowBack,
+  IoLogoGithub,
+  IoRocketOutline,
+  IoCodeSlash,
+  IoLibrary,
+  IoServer,
+  IoCloud,
+} from "react-icons/io5";
 
 export default function About() {
   const technologies = [
@@ -21,7 +29,10 @@ export default function About() {
       items: [
         { name: "OpenWeatherMap API", description: "Hava durumu verileri için kullanılan servis" },
         { name: "Kandilli Rasathanesi API", description: "Deprem verilerinin kaynağı" },
-        { name: "Carbon Interface API", description: "Karbon ayak izi hesaplamaları için kullanılan servis" },
+        {
+          name: "Carbon Interface API",
+          description: "Karbon ayak izi hesaplamaları için kullanılan servis",
+        },
       ],
     },
     {
@@ -137,7 +148,7 @@ export default function About() {
             hover:bg-gray-700 dark:hover:bg-gray-600 transition-colors duration-300"
           >
             <IoLogoGithub className="w-6 h-6 mr-2" />
-            GitHub'da İncele
+            GitHub&apos;da İncele
           </a>
           <p className="mt-4 text-sm text-gray-500 dark:text-gray-400">
             © {new Date().getFullYear()} Tüm hakları saklıdır.
