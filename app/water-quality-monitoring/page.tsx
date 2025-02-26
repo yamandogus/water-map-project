@@ -211,7 +211,7 @@ export default function WaterQualityMonitoring() {
             Su Kalitesi İzleme Sistemi
           </h1>
           <p className="text-xl text-gray-600 dark:text-gray-300">
-            Türkiye'deki önemli su kaynaklarının kalite değerleri ve karbon ayak izi analizi
+            Türkiye&apos;nin su kaynaklarının kalite değerleri ve çevresel etki analizleri
           </p>
         </div>
 
