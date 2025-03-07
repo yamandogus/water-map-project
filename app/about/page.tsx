@@ -49,26 +49,29 @@ export default function About() {
   const features = [
     {
       title: "Hava Durumu İzleme",
-      description: "OpenWeatherMap API entegrasyonu ile Türkiye'deki tüm şehirler için anlık hava durumu bilgileri, 5 günlük tahminler ve detaylı meteorolojik veriler sunulmaktadır.",
+      description:
+        "OpenWeatherMap API entegrasyonu ile Türkiye'deki tüm şehirler için anlık hava durumu bilgileri, 5 günlük tahminler ve detaylı meteorolojik veriler sunulmaktadır.",
       icon: <IoCloud className="w-8 h-8 text-blue-500" />,
     },
     {
       title: "Deprem Takip Sistemi",
-      description: "Kandilli Rasathanesi API entegrasyonu sayesinde Türkiye ve çevresindeki son depremler, büyüklük ve lokasyon bilgileri anlık olarak takip edilebilmektedir.",
+      description:
+        "Kandilli Rasathanesi API entegrasyonu sayesinde Türkiye ve çevresindeki son depremler, büyüklük ve lokasyon bilgileri anlık olarak takip edilebilmektedir.",
       icon: <IoServer className="w-8 h-8 text-red-500" />,
     },
     {
       title: "Su Kalitesi Analizi",
-      description: "Türkiye'deki önemli su kaynaklarının kalite değerleri, içilebilirlik durumu ve çevresel etki analizleri detaylı olarak sunulmaktadır.",
+      description:
+        "Türkiye'deki önemli su kaynaklarının kalite değerleri, içilebilirlik durumu ve çevresel etki analizleri detaylı olarak sunulmaktadır.",
       icon: <IoLibrary className="w-8 h-8 text-violet-500" />,
     },
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 py-12 px-4">
+    <div className="min-h-screen py-12 px-4">
       <div className="max-w-7xl mx-auto">
         {/* Geri Dönüş Linki */}
-        <div className="mb-8">
+        <div className="mb-2">
           <Link
             className="inline-flex items-center text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
             href="/"
@@ -81,11 +84,10 @@ export default function About() {
         {/* Başlık Bölümü */}
         <div className="text-center mb-16">
           <IoRocketOutline className="w-20 h-20 mx-auto text-blue-500 mb-6" />
-          <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-4">
-            Proje Hakkında
-          </h1>
+          <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-4">Proje Hakkında</h1>
           <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Modern web teknolojileri kullanılarak geliştirilmiş, çevre ve doğal olayları takip etmeye yönelik kapsamlı bir bilgilendirme platformu.
+            Modern web teknolojileri kullanılarak geliştirilmiş, çevre ve doğal olayları takip
+            etmeye yönelik kapsamlı bir bilgilendirme platformu.
           </p>
         </div>
 
@@ -102,9 +104,7 @@ export default function About() {
               <h3 className="text-xl font-semibold text-gray-800 dark:text-white mb-3">
                 {feature.title}
               </h3>
-              <p className="text-gray-600 dark:text-gray-300">
-                {feature.description}
-              </p>
+              <p className="text-gray-600 dark:text-gray-300">{feature.description}</p>
             </div>
           ))}
         </div>

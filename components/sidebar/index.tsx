@@ -1,5 +1,8 @@
+"use client";
+
 import { Popover, PopoverTrigger } from "@heroui/popover";
 import React from "react";
+import { motion } from "framer-motion";
 import {
   IoGrid,
   IoCloudOutline,
@@ -9,7 +12,7 @@ import {
   IoInformationCircleOutline,
 } from "react-icons/io5";
 
-import NavItem from "./NavItem";
+import { NavItem } from "./NavItem";
 import ProfilePopover from "./ProfilePopover";
 import { ThemeSwitch } from "../theme-switch";
 
@@ -74,20 +77,40 @@ const navItems = [
 const Sidebar = () => {
   return (
     <div className="hidden md:flex">
-      <div
-        className="flex flex-col items-center w-18 h-screen fixed left-0 top-0 py-6 gap-6 m-2 rounded-2xl z-50
-        bg-white/10 dark:bg-gray-900/20 backdrop-blur-xl
+      <motion.div
+        initial={{ x: -100, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ type: "spring", stiffness: 100, damping: 20 }}
+        className="flex flex-col items-center w-18 h-[95vh] fixed left-0 top-0 py-6 gap-6 m-4 rounded-2xl z-50
+        bg-white/10 dark:bg-gray-700 backdrop-blur-xl
         border border-white/20 dark:border-gray-700/30
         shadow-[2px_8px_8px_2px_rgba(31,38,135,0.37)] dark:shadow-[2px_8px_8px_2px_rgba(31,38,135,0.37)]"
       >
-        <div className="flex flex-col gap-6">
+        <motion.div
+          className="flex flex-col gap-6"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+        >
           {/* Navigasyon Öğeleri */}
           {navItems.map((item, index) => (
-            <NavItem key={index} {...item} />
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <NavItem {...item} />
+            </motion.div>
           ))}
 
           {/* Tema Değiştirici */}
-          <div className="flex flex-col items-center gap-2 group">
+          <motion.div
+            className="flex flex-col items-center gap-2 group"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: navItems.length * 0.1 }}
+          >
             <button
               className="p-2.5 rounded-xl bg-gradient-to-br from-purple-500/10 to-pink-500/10 
               hover:from-purple-500/20 hover:to-pink-500/20 transition-all duration-300
@@ -96,16 +119,21 @@ const Sidebar = () => {
               <ThemeSwitch />
             </button>
             <span
-              className="text-[10px] font-medium text-gray-600 dark:text-gray-400 
+              className="text-[10px] font-bold text-gray-600 dark:text-gray-400 
               opacity-0 group-hover:opacity-100 transition-opacity"
             >
               Tema
             </span>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
 
         {/* Ayarlar ve Profil */}
-        <div className="mt-auto">
+        <motion.div
+          className="mt-auto"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: (navItems.length + 1) * 0.1 }}
+        >
           <Popover color="secondary" placement="right">
             <PopoverTrigger>
               <button
@@ -115,16 +143,16 @@ const Sidebar = () => {
               >
                 <IoSettings
                   className="w-5 h-5 text-gray-600 dark:text-gray-400 
-                  hover:scale-110 transition-transform hover:rotate-90 transition-all duration-500"
+                  hover:scale-110 transition-transform hover:rotate-90 duration-500"
                 />
               </button>
             </PopoverTrigger>
             <ProfilePopover />
           </Popover>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </div>
   );
 };
 
-export default Sidebar; 
+export default Sidebar;

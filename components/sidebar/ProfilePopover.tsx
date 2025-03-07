@@ -1,3 +1,5 @@
+"use client";
+
 import { PopoverContent } from "@heroui/popover";
 import React from "react";
 
@@ -18,9 +20,7 @@ const ProfilePopover = () => {
           <h2 className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
             Doğuş Yaman
           </h2>
-          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">
-            Frontend Developer
-          </p>
+          <p className="text-sm text-gray-500 dark:text-gray-400 mt-1">Frontend Developer</p>
         </div>
 
         {/* Sosyal Medya Linkleri */}
@@ -134,4 +134,4 @@ const ProfilePopover = () => {
   );
 };
 
-export default ProfilePopover; 
+export default ProfilePopover;
