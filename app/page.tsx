@@ -16,6 +16,58 @@ import {
 import { motion } from "framer-motion";
 
 export default function Home() {
+  const getCardBorderClass = (gradient: string) => {
+    const color = gradient.split("-")[2];
+    switch (color) {
+      case "cyan":
+        return "group-hover:border-cyan-400";
+      case "orange":
+        return "group-hover:border-orange-400";
+      case "purple":
+        return "group-hover:border-purple-400";
+      case "green":
+        return "group-hover:border-green-400";
+      default:
+        return "group-hover:border-blue-400";
+    }
+  };
+
+  const getButtonClasses = (gradient: string) => {
+    const color = gradient.split("-")[1];
+    const baseClasses = `inline-flex items-center gap-2 text-sm font-semibold relative`;
+
+    switch (color) {
+      case "blue":
+        return `${baseClasses} text-blue-500 dark:text-blue-400`;
+      case "red":
+        return `${baseClasses} text-red-500 dark:text-red-400`;
+      case "violet":
+        return `${baseClasses} text-violet-500 dark:text-violet-400`;
+      case "emerald":
+        return `${baseClasses} text-emerald-500 dark:text-emerald-400`;
+      default:
+        return `${baseClasses} text-blue-500 dark:text-blue-400`;
+    }
+  };
+
+  const getSpanClasses = (gradient: string) => {
+    const color = gradient.split("-")[1];
+    const baseClasses = `relative border-b-2 border-transparent`;
+
+    switch (color) {
+      case "blue":
+        return `${baseClasses} after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-blue-500 dark:after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full`;
+      case "red":
+        return `${baseClasses} after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-red-500 dark:after:bg-red-400 after:transition-all after:duration-300 hover:after:w-full`;
+      case "violet":
+        return `${baseClasses} after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-violet-500 dark:after:bg-violet-400 after:transition-all after:duration-300 hover:after:w-full`;
+      case "emerald":
+        return `${baseClasses} after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-emerald-500 dark:after:bg-emerald-400 after:transition-all after:duration-300 hover:after:w-full`;
+      default:
+        return `${baseClasses} after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-blue-500 dark:after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full`;
+    }
+  };
+
   const cards = [
     {
       title: "HAVA DURUMU",
@@ -31,6 +83,7 @@ export default function Home() {
         { icon: <IoTimeOutline className="w-4 h-4" />, text: "5 Günlük Tahmin" },
       ],
       status: "🌤️ Canlı Veri",
+      afterColor: "blue-500",
     },
     {
       title: "DEPREMLER",
@@ -46,6 +99,7 @@ export default function Home() {
         { icon: <IoSpeedometerOutline className="w-4 h-4" />, text: "Şiddet Ölçümü" },
       ],
       status: "📍 Gerçek Zamanlı",
+      afterColor: "orange-500",
     },
     {
       title: "SU KALİTESİ TAKİP",
@@ -61,6 +115,7 @@ export default function Home() {
         { icon: <IoTimeOutline className="w-4 h-4" />, text: "Günlük Rapor" },
       ],
       status: "💧 Su Verileri",
+      afterColor: "purple-500",
     },
     {
       title: "PROJELER HAKKINDA",
@@ -76,13 +131,14 @@ export default function Home() {
         { icon: <IoTimeOutline className="w-4 h-4" />, text: "Güncel Versiyon" },
       ],
       status: "ℹ️ Bilgi",
+      afterColor: "green-500",
     },
   ];
 
   return (
-    <div className="min-h-screen py-6 px-6 flex items-center">
+    <div className="min-h-screen py-6 px-4 lg:px-6 flex items-center">
       <div className="max-w-7xl mx-auto w-full">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {cards.map((card, index) => (
             <motion.div
               key={index}
@@ -93,61 +149,55 @@ export default function Home() {
             >
               <Link className="block group h-full" href={card.href}>
                 <div
-                  className={`relative overflow-hidden rounded-3xl bg-white dark:bg-gray-800
+                  className={`relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800
                   border-2 border-gray-100 dark:border-gray-700 shadow-lg
-                  transition-all duration-500 ease-out transform hover:scale-[1.02] hover:shadow-xl
-                  group-hover:border-${card.gradient.split("-")[2]} dark:group-hover:border-${card.gradient.split("-")[2]}
+                  transition-all duration-500 ease-out will-change-transform hover:shadow-xl
+                  ${getCardBorderClass(card.gradient)}
                   h-full flex flex-col`}
                 >
-                  <div className="relative p-8 flex gap-8 flex-grow">
-                    {/* Sol taraf - İkon */}
-                    <div className="flex-shrink-0">
-                      <div className="flex flex-col items-center">
+                  <div className="relative p-6 flex flex-col flex-grow">
+                    {/* Üst kısım - İkon ve Başlık */}
+                    <div className="flex items-center gap-4 mb-4 pb-4 border-b border-gray-100 dark:border-gray-700">
+                      <div className="flex-shrink-0">
                         <div
-                          className={`${card.iconBg} p-4 rounded-2xl group-hover:scale-110 transition-transform duration-500`}
+                          className={`${card.iconBg} p-3 rounded-xl group-hover:scale-110 transition-transform duration-500`}
                         >
                           <div
-                            className={`bg-gradient-to-br ${card.gradient} ${card.hoverGradient} transition-colors duration-500 rounded-xl p-3`}
+                            className={`bg-gradient-to-br ${card.gradient} ${card.hoverGradient} transition-colors duration-500 rounded-lg p-2`}
                           >
-                            <div className="w-10 h-10">{card.icon}</div>
+                            <div className="w-8 h-8">{card.icon}</div>
                           </div>
                         </div>
                       </div>
-                    </div>
-
-                    {/* Sağ taraf - İçerik */}
-                    <div className="flex flex-col flex-grow">
-                      <div className="flex items-center gap-2 mb-2">
-                        <span className="text-base font-medium text-gray-600 dark:text-gray-400">
+                      <div className="flex flex-col">
+                        <span className="text-sm font-medium text-gray-600 dark:text-gray-400 mb-1">
                           {card.status}
                         </span>
+                        <h2 className="text-xl font-bold text-gray-800 dark:text-white">
+                          {card.title}
+                        </h2>
                       </div>
-                      <h2 className="text-2xl font-bold mb-3 text-gray-800 dark:text-white">
-                        {card.title}
-                      </h2>
-                      <p className="text-base leading-relaxed text-gray-600 dark:text-gray-300 mb-6">
+                    </div>
+
+                    {/* Alt kısım - İçerik */}
+                    <div className="flex flex-col flex-grow">
+                      <p className="text-sm leading-relaxed text-gray-600 dark:text-gray-300 mb-4">
                         {card.description}
                       </p>
                       <div className="mt-auto">
-                        <div className="flex items-center gap-6 mb-4">
+                        <div className="flex items-center gap-4 mb-4">
                           {card.features.map((feature, idx) => (
                             <div
                               key={idx}
-                              className="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-400"
+                              className="flex items-center gap-1.5 text-xs text-gray-600 dark:text-gray-400"
                             >
-                              <div className="w-5 h-5">{feature.icon}</div>
+                              <div className="w-4 h-4">{feature.icon}</div>
                               <span>{feature.text}</span>
                             </div>
                           ))}
                         </div>
-                        <div
-                          className={`inline-flex items-center gap-2 text-sm font-semibold px-4 py-2 rounded-xl
-                          text-${card.gradient.split("-")[2]}-500 dark:text-${card.gradient.split("-")[2]}-400
-                          bg-${card.gradient.split("-")[2]}-50 dark:bg-${card.gradient.split("-")[2]}-500/10
-                          group-hover:bg-${card.gradient.split("-")[2]}-100 dark:group-hover:bg-${card.gradient.split("-")[2]}-500/20
-                          transition-all duration-300`}
-                        >
-                          <span>Detaylar</span>
+                        <div className={getButtonClasses(card.gradient)}>
+                          <span className={getSpanClasses(card.gradient)}>Detaylar</span>
                           <IoArrowForward className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
                         </div>
                       </div>

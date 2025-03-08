@@ -71,8 +71,8 @@ const Page = () => {
   return (
     <div className="min-h-screen">
       <div className="flex flex-col h-full">
-        <div className="flex justify-between items-center p-4 bg-gray-800 dark:bg-gray-950 sticky top-0 z-10">
-          <h1 className="text-lg sm:text-2xl text-white font-bold">
+        <div className="flex justify-center items-center gap-4  sticky top-0 z-10 py-4">
+          <h1 className="text-lg sm:text-2xl text-black dark:text-white font-bold">
             Deprem Bilgilendirme ve Son Depremler
           </h1>
           <button

@@ -10,7 +10,14 @@ const WeatherInfoCard = ({ weatherData }: { weatherData: WeatherResponse }) => {
   const currentDate = new Date().toLocaleDateString();
 
   return (
-    <Card className="p-6 dark:shadow-white/30 dark:text-gray-400">
+    <Card
+      className="relative p-6 h-full
+      bg-white/95 dark:bg-gray-800/80 backdrop-blur-md
+      border-2 border-gray-300 dark:border-gray-700/80
+      rounded-2xl
+      shadow-[0_8px_30px_-4px_rgba(0,0,0,0.15)] dark:shadow-[0_8px_30px_-4px_rgba(255,255,255,0.1)]
+      transition-all duration-300"
+    >
       <h2 className="text-4xl font-bold">
         {weatherData?.city.name}, {weatherData?.city.country}
       </h2>

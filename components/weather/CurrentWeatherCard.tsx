@@ -7,7 +7,14 @@ import { WeatherResponse } from "@/types/type";
 
 const CurrentWeatherCard = ({ weatherData }: { weatherData: WeatherResponse }) => {
   return (
-    <Card className={`p-6 dark:shadow-white/30 dark:text-gray-600 transition-all duration-300`}>
+    <Card
+      className={`relative p-6 h-full
+      bg-white/95 dark:bg-gray-800/80 backdrop-blur-md
+      border-2 border-gray-300 dark:border-gray-700/80
+      rounded-2xl
+      shadow-[0_8px_30px_-4px_rgba(0,0,0,0.15)] dark:shadow-[0_8px_30px_-4px_rgba(255,255,255,0.1)]
+      transition-all duration-300`}
+    >
       <div className="flex sm:justify-between sm:flex-row flex-col items-center p-4 rounded-2xl">
         <div className="sm:order-1 order-2 sm:text-left text-center">
           <div className="text-6xl font-bold">{weatherData?.list[0].main.temp}°C</div>
@@ -52,7 +59,7 @@ const CurrentWeatherCard = ({ weatherData }: { weatherData: WeatherResponse }) =
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-3 gap-4 mt-6 backdrop-blur-sm bg-white/30 p-4 rounded-lg">
+      <div className="grid grid-cols-3 gap-4 mt-6 backdrop-blur-sm bg-gray-50/80 dark:bg-white/30 p-4 rounded-lg">
         <div className="text-center">
           <div className="text-md font-bold">🌬️ Nem</div>
           <div className="font-bold text-yellow-400 dark:text-blue-500">

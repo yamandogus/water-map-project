@@ -83,7 +83,7 @@ const Sidebar = () => {
         transition={{ type: "spring", stiffness: 100, damping: 20 }}
         className="flex flex-col items-center w-18 h-[95vh] fixed left-0 top-0 py-6 gap-6 m-4 rounded-2xl z-50
         bg-white/10 dark:bg-gray-700 backdrop-blur-xl
-        border border-white/20 dark:border-gray-700/30
+        border-2 border-gray-300/80 dark:border-gray-700/30
         shadow-[2px_8px_8px_2px_rgba(31,38,135,0.37)] dark:shadow-[2px_8px_8px_2px_rgba(31,38,135,0.37)]"
       >
         <motion.div

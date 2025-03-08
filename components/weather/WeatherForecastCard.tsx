@@ -30,7 +30,14 @@ const getWeatherEmoji = (weatherMain: string) => {
 
 const WeatherForecastCard = ({ weatherData }: { weatherData: WeatherResponse }) => {
   return (
-    <Card className="p-6 dark:shadow-white/30 dark:text-gray-400">
+    <Card
+      className="relative p-6 h-full
+      bg-white/95 dark:bg-gray-800/80 backdrop-blur-md
+      border-2 border-gray-300 dark:border-gray-700/80
+      rounded-2xl
+      shadow-[0_8px_30px_-4px_rgba(0,0,0,0.15)] dark:shadow-[0_8px_30px_-4px_rgba(255,255,255,0.1)]
+      transition-all duration-300"
+    >
       <h2 className="text-2xl font-bold mb-4">5 Günlük Tahmin:</h2>
       <div className="space-y-4">
         {weatherData?.list
@@ -38,7 +45,7 @@ const WeatherForecastCard = ({ weatherData }: { weatherData: WeatherResponse }) 
           .slice(0, 5)
           .map((item, index) => (
             <div
-              className="flex items-center justify-between p-2 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg border-b"
+              className="flex items-center justify-between p-2 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg border-b border-gray-200 dark:border-gray-700"
               key={index}
             >
               <div className="flex sm:flex-row flex-col items-center gap-4">

@@ -95,8 +95,8 @@ export default function WeatherDashboard() {
         height: "100%",
       }}
     >
-      <div className="relative z-10 max-w-7xl mx-auto space-y-6 px-4">
-        <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 py-4">
+      <div className="relative z-10 max-w-7xl mx-auto space-y-6 px-4 mt-4">
+        <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6">
           <div className="relative w-full">
             <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
               <IoLocationOutline className="h-5 w-5 text-gray-400" />
@@ -104,9 +104,9 @@ export default function WeatherDashboard() {
             <input
               type="text"
               className="w-full pl-10 pr-4 py-2.5 
-              bg-white/80 dark:bg-gray-800/80 backdrop-blur-md
-              border border-gray-200 dark:border-gray-700
-              rounded-xl shadow-lg
+              bg-white/95 dark:bg-gray-800/80 backdrop-blur-md
+              border-2 border-gray-300 dark:border-gray-700/80
+              rounded-xl shadow-[0_4px_20px_-4px_rgba(0,0,0,0.15)] dark:shadow-[0_4px_20px_-4px_rgba(255,255,255,0.1)]
               text-gray-900 dark:text-white
               placeholder-gray-500 dark:placeholder-gray-400
               focus:outline-none focus:ring-2 focus:ring-blue-500/50 dark:focus:ring-blue-400/50
@@ -117,11 +117,14 @@ export default function WeatherDashboard() {
               value={searchTerm}
               onFocus={() => setIsOpen(true)}
             />
-            
+
             {/* Öneriler Dropdown */}
             {isOpen && suggestions.length > 0 && (
-              <div className="absolute w-full mt-2 py-2 bg-white dark:bg-gray-800 rounded-xl shadow-lg 
-              border border-gray-200 dark:border-gray-700 backdrop-blur-md max-h-60 overflow-y-auto z-[100]">
+              <div
+                className="absolute w-full mt-2 py-2 bg-white/95 dark:bg-gray-800/90 rounded-xl 
+              shadow-[0_8px_30px_-4px_rgba(0,0,0,0.15)] dark:shadow-[0_8px_30px_-4px_rgba(255,255,255,0.1)]
+              border-2 border-gray-300 dark:border-gray-700/80 backdrop-blur-md max-h-60 overflow-y-auto z-[100]"
+              >
                 {suggestions.map((suggestion, index) => (
                   <button
                     key={index}
@@ -131,7 +134,7 @@ export default function WeatherDashboard() {
                     onClick={() => {
                       setLat(Number(suggestion.lat));
                       setLon(Number(suggestion.lon));
-                      setSearchTerm(suggestion.display_name.split(',')[0]); // Sadece ilk kısmı al
+                      setSearchTerm(suggestion.display_name.split(",")[0]);
                       setIsOpen(false);
                     }}
                   >
