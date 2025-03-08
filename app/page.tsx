@@ -150,14 +150,14 @@ export default function Home() {
               <Link className="block group h-full" href={card.href}>
                 <div
                   className={`relative overflow-hidden rounded-2xl bg-white dark:bg-gray-800
-                  border-2 border-gray-100 dark:border-gray-700 shadow-lg
+                  border-2 border-gray-200/80 dark:border-gray-700 shadow-lg
                   transition-all duration-500 ease-out will-change-transform hover:shadow-xl
                   ${getCardBorderClass(card.gradient)}
                   h-full flex flex-col`}
                 >
                   <div className="relative p-6 flex flex-col flex-grow">
                     {/* Üst kısım - İkon ve Başlık */}
-                    <div className="flex items-center gap-4 mb-4 pb-4 border-b border-gray-100 dark:border-gray-700">
+                    <div className="flex items-center gap-4 mb-4 pb-4 border-b border-gray-200 dark:border-gray-700">
                       <div className="flex-shrink-0">
                         <div
                           className={`${card.iconBg} p-3 rounded-xl group-hover:scale-110 transition-transform duration-500`}

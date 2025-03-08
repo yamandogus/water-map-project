@@ -89,14 +89,14 @@ const Page = () => {
           {/* Sol Taraf - Deprem Bilgileri */}
           <div className="w-full lg:w-1/3 space-y-4 lg:overflow-y-auto lg:pr-2 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-thumb]:bg-gray-600 [&::-webkit-scrollbar-track]:bg-gray-100 dark:[&::-webkit-scrollbar-track]:bg-gray-800 [&::-webkit-scrollbar-thumb]:rounded-full">
             {/* Acil Numaralar */}
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 sm:p-6">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 sm:p-6 border-2 border-gray-200 dark:border-gray-700">
               <h2 className="text-lg sm:text-xl font-bold mb-4 text-red-600 dark:text-red-400">
                 ⚠️ Acil Durum Numaraları
               </h2>
               <div className="grid grid-cols-2 sm:grid-cols-2 gap-2 sm:gap-3">
                 {emergencyNumbers.map((item, index) => (
                   <div
-                    className="bg-gray-100 dark:bg-gray-700 p-2 sm:p-3 rounded-lg text-center"
+                    className="bg-gray-50 dark:bg-gray-700 p-2 sm:p-3 rounded-lg text-center border border-gray-200 dark:border-gray-600"
                     key={index}
                   >
                     <p className="font-bold text-gray-800 dark:text-gray-200 text-sm sm:text-base">
@@ -111,7 +111,7 @@ const Page = () => {
             </div>
 
             {/* Deprem Çantası */}
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 sm:p-6">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 sm:p-6 border-2 border-gray-200 dark:border-gray-700">
               <h2 className="text-lg sm:text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                 🎒 Deprem Çantasında Bulunması Gerekenler
               </h2>
@@ -123,7 +123,7 @@ const Page = () => {
             </div>
 
             {/* Deprem Anında Yapılması Gerekenler */}
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 sm:p-6">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 sm:p-6 border-2 border-gray-200 dark:border-gray-700">
               <h2 className="text-lg sm:text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                 ⚡ Deprem Anında Yapılması Gerekenler
               </h2>
@@ -166,14 +166,14 @@ const Page = () => {
             </div>
 
             {/* Acil Durum Uygulamaları */}
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 sm:p-6">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 sm:p-6 border-2 border-gray-200 dark:border-gray-700">
               <h2 className="text-lg sm:text-xl font-bold mb-4 text-gray-900 dark:text-gray-100">
                 📱 Faydalı Uygulamalar
               </h2>
               <div className="space-y-3 sm:space-y-4">
                 {emergencyApps.map((app, index) => (
                   <a
-                    className="block p-3 sm:p-4 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
+                    className="block p-3 sm:p-4 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors border border-gray-200 dark:border-gray-600"
                     href={app.url}
                     key={index}
                     rel="noopener noreferrer"
@@ -196,7 +196,7 @@ const Page = () => {
             <div className="grid grid-cols-1 gap-4">
               {earthquakes.map((earthquake, index) => (
                 <div
-                  className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-3 sm:p-4"
+                  className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-3 sm:p-4 border-2 border-gray-200 dark:border-gray-700"
                   key={index}
                 >
                   <div className="space-y-2">
