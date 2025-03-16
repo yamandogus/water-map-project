@@ -12,9 +12,6 @@ import WeatherInfoCard from "./weather/WeatherInfoCard";
 
 import { WeatherResponse } from "@/types/type";
 
-const URL = "https://api.openweathermap.org/data/2.5/forecast";
-const API_KEY = process.env.NEXT_PUBLIC_API_KEY || "01b8d2d1a240b89af7e0abc2f0917672";
-
 interface Suggestion {
   display_name: string;
   lat: string;
@@ -22,12 +19,12 @@ interface Suggestion {
 }
 
 export default function WeatherDashboard() {
-  const [weatherData, setWeatherData] = useState<WeatherResponse | null>(dummyData);
-  const [lat, setLat] = useState(0);
-  const [lon, setLon] = useState(0);
-  const [searchTerm, setSearchTerm] = useState("");
+  const [weatherData, setWeatherData] = useState<WeatherResponse>(dummyData);
+  const [lat, setLat] = useState<number>(0);
+  const [lon, setLon] = useState<number>(0);
+  const [searchTerm, setSearchTerm] = useState<string>("");
   const [suggestions, setSuggestions] = useState<Suggestion[]>([]);
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
   useEffect(() => {
     if (lat !== 0 && lon !== 0) {
@@ -37,19 +34,14 @@ export default function WeatherDashboard() {
 
   const handleClick = async () => {
     try {
-      const response = await axios.get(URL, {
+      const response = await axios.get("/api/weather", {
         params: {
           lat: lat,
-          lon: lon,
-          lang: "tr",
-          appid: API_KEY,
-          units: "metric",
-          cnt: "40",
-        },
+          lon: lon
+        }
       });
 
       setWeatherData(response.data);
-
       return response.data;
     } catch (error) {
       console.error("Error fetching weather data", error);
@@ -62,10 +54,10 @@ export default function WeatherDashboard() {
 
     setSearchTerm(value);
     if (value.length > 0) {
-      const response = axios.get(
+      const response = await axios.get(
         `https://nominatim.openstreetmap.org/search?q=${value}&format=json&addressdetails=1&limit=100`
       );
-      const filteredSuggestions = (await response).data.map((item: any) => ({
+      const filteredSuggestions = response.data.map((item: any) => ({
         display_name: item.display_name,
         lat: item.lat,
         lon: item.lon,
@@ -118,7 +110,6 @@ export default function WeatherDashboard() {
               onFocus={() => setIsOpen(true)}
             />
 
-            {/* Öneriler Dropdown */}
             {isOpen && suggestions.length > 0 && (
               <div
                 className="absolute w-full mt-2 py-2 bg-white/95 dark:bg-gray-800/90 rounded-xl 
@@ -147,13 +138,13 @@ export default function WeatherDashboard() {
         </div>
 
         <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6">
-          <CurrentWeatherCard weatherData={weatherData ?? dummyData} />
-          <WeatherInfoCard weatherData={weatherData ?? dummyData} />
+          <CurrentWeatherCard weatherData={weatherData} />
+          <WeatherInfoCard weatherData={weatherData} />
         </div>
 
         <div className="grid sm:grid-cols-1 md:grid-cols-2 gap-6 mt-6 pb-4">
-          <WeatherForecastCard weatherData={weatherData ?? dummyData} />
-          <HourlyForecastCard weatherData={weatherData ?? dummyData} />
+          <WeatherForecastCard weatherData={weatherData} />
+          <HourlyForecastCard weatherData={weatherData} />
         </div>
       </div>
     </div>
