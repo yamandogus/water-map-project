@@ -90,7 +90,7 @@ export default function Home() {
       description:
         "Kandilli Rasathanesi API entegrasyonu ile son depremler, büyüklük ve lokasyon bilgileri. Deprem riski olan bölgeler ve alınması gereken önlemler hakkında kapsamlı bilgiler.",
       icon: <IoLocationOutline className="w-8 h-8" />,
-      href: "/navigation",
+      href: "/earthquakes",
       gradient: "from-red-500 to-orange-400",
       iconBg: "bg-red-500/10",
       hoverGradient: "hover:from-red-600 hover:to-orange-500",

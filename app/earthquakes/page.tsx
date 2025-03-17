@@ -9,11 +9,17 @@ const Page = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const emergencyNumbers = [
-    { name: "AFAD", number: "122" },
-    { name: "Acil Çağrı", number: "112" },
-    { name: "İtfaiye", number: "110" },
-    { name: "Polis İmdat", number: "155" },
-    { name: "Jandarma", number: "156" },
+    { name: "Acil Yardım Hattı", number: "112" },
+    { name: "Elektrik Arıza", number: "186" },
+    { name: "Doğalgaz Arıza", number: "187" },
+    { name: "Su Arıza", number: "185" },
+    { name: "Aile İçi Şiddet", number: "183" },
+    { name: "Sosyal Yardım", number: "144" },
+    { name: "Cenaze Hizmetleri", number: "188" },
+    { name: "Kıyı Emniyet", number: "151" },
+    { name: "TCDD Acil", number: "131" },
+    { name: "Karayolları", number: "159" },
+    { name: "COVID-19 Danışma", number: "184" },
   ];
 
   const emergencyBag = [
@@ -71,12 +77,15 @@ const Page = () => {
   return (
     <div className="min-h-screen">
       <div className="flex flex-col h-full">
-        <div className="flex justify-center items-center gap-4  sticky top-0 z-10 py-4">
-          <h1 className="text-lg sm:text-2xl text-black dark:text-white font-bold">
-            Deprem Bilgilendirme ve Son Depremler
-          </h1>
+        <div className="flex justify-between items-center sticky top-0 z-10 py-3 px-4 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800">
+          <div className="flex items-center gap-2">
+            <span className="text-red-500 dark:text-red-400">🌋</span>
+            <h1 className="text-base font-medium text-gray-800 dark:text-gray-200">
+              Son Depremler
+            </h1>
+          </div>
           <button
-            className={`px-2 sm:px-4 py-2 bg-blue-500 text-white rounded transition-colors flex items-center gap-2 text-sm sm:text-base
+            className={`px-3 py-1.5 bg-blue-500 text-white text-sm rounded-full transition-colors flex items-center gap-2
               ${isLoading ? "opacity-50 cursor-not-allowed" : "hover:bg-blue-600"}`}
             disabled={isLoading}
             onClick={handleRefresh}
@@ -89,20 +98,26 @@ const Page = () => {
           {/* Sol Taraf - Deprem Bilgileri */}
           <div className="w-full lg:w-1/3 space-y-4 lg:overflow-y-auto lg:pr-2 [&::-webkit-scrollbar]:w-2 [&::-webkit-scrollbar-thumb]:bg-gray-300 dark:[&::-webkit-scrollbar-thumb]:bg-gray-600 [&::-webkit-scrollbar-track]:bg-gray-100 dark:[&::-webkit-scrollbar-track]:bg-gray-800 [&::-webkit-scrollbar-thumb]:rounded-full">
             {/* Acil Numaralar */}
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 sm:p-6 border-2 border-gray-200 dark:border-gray-700">
-              <h2 className="text-lg sm:text-xl font-bold mb-4 text-red-600 dark:text-red-400">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-3 sm:p-4 border-2 border-gray-200 dark:border-gray-700">
+              <h2 className="text-base sm:text-lg font-bold mb-3 text-red-600 dark:text-red-400">
                 ⚠️ Acil Durum Numaraları
               </h2>
-              <div className="grid grid-cols-2 sm:grid-cols-2 gap-2 sm:gap-3">
+              <div className="mb-3 p-2 bg-blue-50 dark:bg-blue-900/30 rounded-lg text-xs">
+                <p className="text-blue-800 dark:text-blue-200">
+                  Türkiye'de tüm acil çağrı numaraları (ambulans, itfaiye, polis, jandarma, sahil
+                  güvenlik) 112 altında birleştirilmiştir.
+                </p>
+              </div>
+              <div className="grid grid-cols-3 sm:grid-cols-4 gap-1.5 sm:gap-2">
                 {emergencyNumbers.map((item, index) => (
                   <div
-                    className="bg-gray-50 dark:bg-gray-700 p-2 sm:p-3 rounded-lg text-center border border-gray-200 dark:border-gray-600"
+                    className="bg-gray-50 dark:bg-gray-700 p-1.5 sm:p-2 rounded-lg text-center border border-gray-200 dark:border-gray-600"
                     key={index}
                   >
-                    <p className="font-bold text-gray-800 dark:text-gray-200 text-sm sm:text-base">
+                    <p className="font-bold text-gray-800 dark:text-gray-200 text-xs">
                       {item.name}
                     </p>
-                    <p className="text-red-600 dark:text-red-400 text-lg sm:text-xl">
+                    <p className="text-red-600 dark:text-red-400 text-sm sm:text-base font-bold">
                       {item.number}
                     </p>
                   </div>

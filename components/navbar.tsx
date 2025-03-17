@@ -44,7 +44,7 @@ export default function Navbar() {
             Hava Durumu
           </Link>
           <NavbarMenuItem>
-            <Link className="w-full" href="/navigation" onClick={() => setIsMenuOpen(false)}>
+            <Link className="w-full" href="/earthquakes" onClick={() => setIsMenuOpen(false)}>
               Depremler
             </Link>
           </NavbarMenuItem>

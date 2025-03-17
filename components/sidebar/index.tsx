@@ -40,7 +40,7 @@ const navItems = [
     textColor: "text-cyan-500 dark:text-cyan-400",
   },
   {
-    href: "/navigation",
+    href: "/earthquakes",
     icon: <IoLocationOutline className="w-5 h-5" />,
     title: "Depremler",
     gradient: {

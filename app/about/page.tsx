@@ -70,7 +70,6 @@ export default function About() {
   return (
     <div className="min-h-screen py-12 px-4">
       <div className="max-w-7xl mx-auto">
-        {/* Geri Dönüş Linki */}
         <div className="mb-2">
           <Link
             className="inline-flex items-center text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white transition-colors"
@@ -81,22 +80,20 @@ export default function About() {
           </Link>
         </div>
 
-        {/* Başlık Bölümü */}
-        <div className="text-center mb-16">
-          <IoRocketOutline className="w-20 h-20 mx-auto text-blue-500 mb-6" />
-          <h1 className="text-4xl font-bold text-gray-800 dark:text-white mb-4">Proje Hakkında</h1>
-          <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
+        <div className="text-center mb-10">
+          <IoRocketOutline className="w-10 h-10 mx-auto text-blue-500 mb-6" />
+          <h1 className="text-2xl font-bold text-gray-800 dark:text-white mb-4">Proje Hakkında</h1>
+          <p className="text-md text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
             Modern web teknolojileri kullanılarak geliştirilmiş, çevre ve doğal olayları takip
             etmeye yönelik kapsamlı bir bilgilendirme platformu.
           </p>
         </div>
 
-        {/* Özellikler */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
           {features.map((feature, index) => (
             <div
               key={index}
-              className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300"
+              className="bg-white dark:bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-200 dark:border-gray-800"
             >
               <div className="bg-gray-50 dark:bg-gray-700 w-16 h-16 rounded-lg flex items-center justify-center mb-4">
                 {feature.icon}
@@ -109,8 +106,7 @@ export default function About() {
           ))}
         </div>
 
-        {/* Teknolojiler */}
-        <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl mb-16">
+        <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-xl mb-16 border border-gray-200 dark:border-gray-800">
           <h2 className="text-2xl font-bold text-gray-800 dark:text-white mb-8 flex items-center">
             <IoCodeSlash className="w-8 h-8 mr-3 text-blue-500" />
             Kullanılan Teknolojiler
@@ -138,7 +134,6 @@ export default function About() {
           </div>
         </div>
 
-        {/* GitHub Bağlantısı */}
         <div className="text-center">
           <a
             href="https://github.com/yamandogus"
