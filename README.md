@@ -18,11 +18,41 @@ Repo: https://github.com/yamandogus/water-map-project
 
 ---
 
-## 🛠️ Kurulum ve Başlatma
+## 🛠️ Kullanılan Teknolojiler
+
+| Teknoloji | Kullanım |
+|-----------|----------|
+| Next.js | React tabanlı framework |
+| React | UI geliştirme |
+| TypeScript | Tip güvenliği ve kod kalitesi |
+| Tailwind CSS | Hızlı ve modern CSS geliştirme |
+| HeroUI Components | UI component kütüphanesi |
+| Axios | API istekleri |
+| Framer Motion | Animasyon ve geçişler |
+
+---
+## 📁 Proje Yapısı
+
+water-map-project/
+├─ public/ # Statik dosyalar (resimler, ikonlar)
+├─ src/
+│ ├─ app/ # Next.js pages ve routing
+│ ├─ components/ # UI bileşenleri
+│ ├─ styles/ # Tailwind ve global CSS
+│ ├─ hooks/ # Özel React Hook'ları
+│ ├─ utils/ # Yardımcı fonksiyonlar
+├─ package.json
+├─ tsconfig.json
+├─ next.config.js
+└─ tailwind.config.js
+
+
+
+## 🛠️ Kurulum ve Çalıştırma
 
 ### Gereksinimler
 
-- Node.js (v16+)
+- Node.js (v16 veya üzeri)
 - npm / yarn / pnpm
 
 ### Kurulum
@@ -40,3 +70,11 @@ npm install
 yarn install
 # veya
 pnpm install
+
+Geliştirme Sunucusu
+
+npm run dev
+# veya
+yarn dev
+# veya
+pnpm dev
