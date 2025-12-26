@@ -1,53 +1,42 @@
-# Next.js & HeroUI Template
+# 🌊 Water Map Project
 
-This is a template for creating applications using Next.js 14 (app directory) and HeroUI (v2).
+**Water Map Project**, su kalitesi ve hava durumu verilerini gerçek zamanlı olarak görüntüleyen, **Next.js**, **TypeScript**, ve **Tailwind CSS** ile geliştirilmiş tamamen duyarlı bir web uygulamasıdır.  
 
-[Try it on CodeSandbox](https://githubbox.com/heroui-inc/heroui/next-app-template)
+Canlı demo: https://water-map-project.vercel.app/  
+Repo: https://github.com/yamandogus/water-map-project
 
-## Technologies Used
+---
 
-- [Next.js 14](https://nextjs.org/docs/getting-started)
-- [HeroUI v2](https://heroui.com/)
-- [Tailwind CSS](https://tailwindcss.com/)
-- [Tailwind Variants](https://tailwind-variants.org)
-- [TypeScript](https://www.typescriptlang.org/)
-- [Framer Motion](https://www.framer.com/motion/)
-- [next-themes](https://github.com/pacocoursey/next-themes)
+## 🚀 Özellikler
 
-## How to Use
+- 📍 Bölgeye göre hava durumu ve su kalitesi görüntüleme
+- 🗺️ Harita tabanlı veri görselleştirme
+- ⚡ React + Next.js ile hızlı ve performanslı frontend
+- 🎨 Tailwind CSS ve HeroUI ile modern tasarım
+- 🔄 Axios ile gerçek zamanlı API veri çekme
+- 🎛️ Kullanıcı dostu responsive arayüz
 
-### Use the template with create-next-app
+---
 
-To create a new project based on this template using `create-next-app`, run the following command:
+## 🛠️ Kurulum ve Başlatma
+
+### Gereksinimler
+
+- Node.js (v16+)
+- npm / yarn / pnpm
+
+### Kurulum
 
 ```bash
-npx create-next-app -e https://github.com/heroui-inc/next-app-template
-```
+# Depoyu klonlayın
+git clone https://github.com/yamandogus/water-map-project.git
 
-### Install dependencies
+# Proje dizinine girin
+cd water-map-project
 
-You can use one of them `npm`, `yarn`, `pnpm`, `bun`, Example using `npm`:
-
-```bash
+# Bağımlılıkları yükleyin
 npm install
-```
-
-### Run the development server
-
-```bash
-npm run dev
-```
-
-### Setup pnpm (optional)
-
-If you are using `pnpm`, you need to add the following code to your `.npmrc` file:
-
-```bash
-public-hoist-pattern[]=*@heroui/*
-```
-
-After modifying the `.npmrc` file, you need to run `pnpm install` again to ensure that the dependencies are installed correctly.
-
-## License
-
-Licensed under the [MIT license](https://github.com/heroui-inc/next-app-template/blob/main/LICENSE).
+# veya
+yarn install
+# veya
+pnpm install
